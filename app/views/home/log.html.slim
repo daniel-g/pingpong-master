@@ -1,0 +1,24 @@
+h1.page-header Log Game
+
+= form_for @game_form, url: games_path, method: :post, html: { class: 'form-horizontal' } do |f|
+  .form-group
+    label.col-sm-2 Date Played
+    .col-sm-9
+      = f.date_select :played_at
+  .form-group
+    label.col-sm-2 Opponent
+    .col-sm-9
+      = f.select :player_2, User.all.collect {|u| [ u.email, u.id ] }
+  .form-group
+    label.col-sm-2 Your score
+    .col-sm-9
+      = f.text_field :score_player_1
+  .form-group
+    label.col-sm-2 Their score
+    .col-sm-9
+      = f.text_field :score_player_2
+  .form-group
+    .col-sm-offset-2.col-sm-9
+      = button_tag "cancel", type: :reset, class: 'link'
+      = f.submit 'Save', class: 'btn btn-default'
+    
