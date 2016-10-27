@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @users = User.order('rating DESC')
+    @users = User.select('row_number() OVER(ORDER BY rating DESC) as rank, users.*').order('rating DESC')
   end
 
   def history

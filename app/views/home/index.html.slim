@@ -8,11 +8,9 @@ table.table
       th Score
       th Games Played
   tbody
-    - index = 0
     - @users.each do |user|
-      - index += 1
       tr
-        td= index
+        td= user.rank
         td= user.email
         td= user.rating
         td= user.games_count
