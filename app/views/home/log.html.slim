@@ -1,6 +1,11 @@
 h1.page-header Log Game
 
+- if flash[:notice].present?
+  .alert.alert-warning(role="alert")= flash[:notice]
+
 = form_for @game_form, url: games_path, method: :post, html: { class: 'form-horizontal' } do |f|
+  - if f.object.errors.any?
+    = render 'layouts/errors', object: f.object
   .form-group
     label.col-sm-2 Date Played
     .col-sm-9

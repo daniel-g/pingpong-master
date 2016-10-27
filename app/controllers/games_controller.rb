@@ -1,6 +1,5 @@
 class GamesController < ApplicationController
   def create
-    binding.pry
     @game_form = GameForm.new(
       player_1: current_user,
       player_2: player_2,
