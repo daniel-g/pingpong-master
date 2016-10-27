@@ -1,1 +1,16 @@
 h1.page-header History
+
+table.table
+  thead
+    tr
+      th Date
+      th Opponent
+      th Score
+      th Result
+  tbody
+    - @games.each do |game|
+      tr
+        td= game.played_at
+        td= game.players.where.not(id: current_user.id).first.email
+        td= game.players_games.map(&:score).join(' - ')
+        td= game.winner_id == current_user.id ? 'W' : 'L'
