@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   end
 
   def history
-    @games = current_user.games.includes(:players_games)
+    @games = GamesDecorator.new(current_user).games
   end
 
   def log

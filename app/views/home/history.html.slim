@@ -11,6 +11,6 @@ table.table
     - @games.each do |game|
       tr
         td= game.played_at
-        td= game.players.where.not(id: current_user.id).first.email
-        td= game.players_games.map(&:score).join(' - ')
-        td= game.winner_id == current_user.id ? 'W' : 'L'
+        td= game.opponent
+        td= game.score
+        td= game.result
