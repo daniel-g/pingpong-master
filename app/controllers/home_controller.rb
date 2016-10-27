@@ -8,6 +8,7 @@ class HomeController < ApplicationController
   end
 
   def log
+    @opponents =  User.where.not(id: current_user).collect {|u| [ u.email, u.id ] }
     @game_form = GameForm.new
   end
 end

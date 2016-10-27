@@ -10,6 +10,7 @@ class GamesController < ApplicationController
     if @game_form.save
       redirect_to '/log', notice: 'Game saved successfully'
     else
+      @opponents =  User.where.not(id: current_user).collect {|u| [ u.email, u.id ] }
       render 'home/log'
     end
   end
